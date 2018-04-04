@@ -3,12 +3,13 @@ class ApplicationController < ActionController::Base
   before_action :ensure_fa_user
 
   def current_user
-    AuthUser.new(email: session[:auth_email])
+    AuthUser.new(session[:auth_user])
   end
+  helper_method :current_user
 
   private
 
   def ensure_fa_user
-    session[:auth_email] || redirect_to('/auth/freeagent_auth/')
+    session[:auth_user] || redirect_to('/auth/freeagent_auth/')
   end
 end

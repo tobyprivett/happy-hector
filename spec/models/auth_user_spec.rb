@@ -2,21 +2,27 @@ require 'rails_helper'
 
 describe AuthUser do
   describe '#from_omniauth_hash' do
-    subject { described_class.from_omniauth_hash(omniauth_hash) }
-
     context 'with a valid omniauth hash' do
-      let(:omniauth_hash) { valid_omnniauth_user }
+      subject { described_class.from_omniauth_hash(valid_omnniauth_user) }
 
-      it 'sets the email address' do
-        expect(subject.email).to eq('alice@example.com')
+      it 'sets the first name' do
+        expect(subject.first_name).to eq('Alice')
+      end
+
+      it 'sets the last name' do
+        expect(subject.last_name).to eq('Arnold')
+      end
+
+      it 'sets the url' do
+        expect(subject.url).to eq('http://test.local/user/1')
       end
     end
 
     context 'with an invalid omniauth hash' do
-      let(:omniauth_hash) { { name: 'bob' } }
-
-      it 'fails gracefully' do
-        expect(subject.email).to be_nil
+      it 'raises an error' do
+        expect do
+          described_class.from_omniauth_hash(foo: 'bar')
+        end.to raise_error
       end
     end
   end
