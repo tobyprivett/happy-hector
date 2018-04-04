@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title HappyHector
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header
+      %nav.navbar.navbar-expand-sm.navbar-light.bg-light
+        %a.navbar-brand{:href => "/"} #{"Happy Hector".upcase}
+        %button.navbar-toggler{"data-target" => "#navbarToggler", "data-toggle" => "collapse", :type => "button"}
+          %span.navbar-toggler-icon
+        #navbarToggler.collapse.navbar-collapse
+          = render partial: 'shared/login_out'
+    %main
+      .container
+
+        .row
+          = yield

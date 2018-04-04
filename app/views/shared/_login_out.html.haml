@@ -1,0 +1,7 @@
+%ul.nav.navbar-nav.ml-auto
+  - if logged_in?
+
+    %li.nav-item.login-details= link_to current_user.first_name, "#", class: 'nav-link'
+    %li.nav-item= link_to 'Sign out', logout_path, method: :delete, class: 'nav-link'
+  - else
+    %li.nav-item= link_to 'Sign in', '/auth/freeagent_auth/', class: 'nav-link'
