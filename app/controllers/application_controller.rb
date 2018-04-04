@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   private
 
   def ensure_fa_user
-    session[:auth_user] || redirect_to('/auth/freeagent_auth/')
+    session[:auth_user] || redirect_to(new_session_path)
   end
 end

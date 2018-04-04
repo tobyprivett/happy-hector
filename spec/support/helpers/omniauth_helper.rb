@@ -10,7 +10,7 @@ def valid_omnniauth_user
   )
 end
 
-def login_as_omniauth_user
+def enable_omniauth_user
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:freeagent_auth] = valid_omnniauth_user
 end
