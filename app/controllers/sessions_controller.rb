@@ -3,6 +3,10 @@ class SessionsController < ApplicationController
 
   def new; end
 
+  def show
+    render json: session[:auth_user] if Rails.env.development?
+  end
+
   def create
     session[:auth_user] =
       AuthUser.from_omniauth_hash(request.env['omniauth.auth'])
