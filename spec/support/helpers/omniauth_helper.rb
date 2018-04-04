@@ -1,11 +1,12 @@
 def valid_omnniauth_user
   OmniAuth::AuthHash.new(
     provider: 'freeagent_auth',
+    uid: 'http://test.local/user/1',
     info: {
       email: 'alice@example.com',
       first_name: 'Alice',
       last_name: 'Arnold',
-      url: 'http://test.local/user/1'
+      access_token: 'FOO'
     }
   )
 end

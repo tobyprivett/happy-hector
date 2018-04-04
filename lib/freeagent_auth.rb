@@ -9,12 +9,14 @@ module OmniAuth
              authorize_url: "#{AUTH_PROVIDER}/approve_app/",
              token_url: "#{AUTH_PROVIDER}/token_endpoint"
 
+      uid { raw_info['user']['url'] }
+
       info do
         {
           first_name: raw_info['user']['first_name'],
           last_name: raw_info['user']['last_name'],
           email: raw_info['user']['email'],
-          url: raw_info['user']['url']
+          access_token: access_token
         }
       end
 
