@@ -7,9 +7,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def logged_in?
+    session[:auth_user]
+  end
+  helper_method :logged_in?
+
   private
 
   def ensure_fa_user
-    session[:auth_user] || redirect_to(new_session_path)
+    logged_in? || redirect_to(new_session_path)
   end
 end
