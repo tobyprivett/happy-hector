@@ -83,6 +83,8 @@ GEM
       temple (>= 0.8.0)
       tilt
     hashie (3.5.6)
+    httparty (0.15.6)
+      multi_xml (>= 0.5.2)
     i18n (1.0.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -268,6 +270,7 @@ DEPENDENCIES
   capybara
   dotenv-rails
   haml
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   launchy
