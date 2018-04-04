@@ -1,12 +1,13 @@
 module OmniAuth
   module Strategies
     class FreeagentAuth < OmniAuth::Strategies::OAuth2
+      AUTH_PROVIDER = ENV['FREEAGENT_OAUTH_PROVIDER']
+
       option :name, 'freeagent_auth'
 
       option :client_options,
-             site: SSO_PROVIDER,
-             authorize_url: 'https://api.freeagent.com/v2/authorize/',
-             token_url: 'https://api.freeagent.com/v2/token_endpoint'
+             authorize_url: "#{AUTH_PROVIDER}/approve_app/",
+             token_url: "#{AUTH_PROVIDER}/token_endpoint"
 
       uid do
         raw_info['id']
@@ -28,7 +29,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.get('https://api.freeagent.com/v2/users/me').parsed
+        @raw_info ||= access_token.get("#{AUTH_PROVIDER}/users/me").parsed
       end
 
       def callback_url
