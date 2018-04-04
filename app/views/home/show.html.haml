@@ -1,1 +1,7 @@
-%h1 Balance Sheet
+.row
+  .col-md-12
+    %h1 Balance Sheet
+.row
+  .col-sm-3 Distributable
+  .col-sm-3.retained-profit= number_to_gbp(@balance_sheet.retained_profit)
+

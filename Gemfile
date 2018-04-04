@@ -35,5 +35,6 @@ group :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'capybara'
   gem 'launchy'
+  gem 'rack_session_access'
   gem 'simplecov', require: false
 end
