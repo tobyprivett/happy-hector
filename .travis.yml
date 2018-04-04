@@ -1,2 +1,2 @@
 language: ruby
-script: bundle exec rubocop
+script: bundle exec rubocop && bundle exec rspec
