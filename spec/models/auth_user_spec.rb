@@ -22,7 +22,7 @@ describe AuthUser do
       it 'raises an error' do
         expect do
           described_class.from_omniauth_hash(foo: 'bar')
-        end.to raise_error
+        end.to raise_error(AuthUser::AuthHashError)
       end
     end
   end

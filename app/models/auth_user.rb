@@ -8,9 +8,13 @@ class AuthUser
     :url
   )
 
+  AuthHashError = Class.new(RuntimeError)
+
   class << self
     def from_omniauth_hash(auth_hash = {})
       info = auth_hash[:info]
+
+      raise AuthHashError if info.blank?
 
       AuthUser.new(
         email: info[:email],
