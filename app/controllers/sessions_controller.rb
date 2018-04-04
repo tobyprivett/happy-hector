@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def new; end
 
   def show
-    render json: session[:auth_user] if Rails.env.development?
+    render json: session[:auth_user]
   end
 
   def create
