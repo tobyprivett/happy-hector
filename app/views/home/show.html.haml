@@ -1,7 +1,14 @@
 .row
-  .col-md-12
+  .col-md-6
     %h1 Balance Sheet
 .row
   .col-sm-3 Distributable
   .col-sm-3.retained-profit= number_to_gbp(@balance_sheet.retained_profit)
+.row{style: "margin-top:30px;"}
+  .col-md-6
+    %h5 Bank Accounts
+- @balance_sheet.bank_accounts.each do |bank_account|
+  .row
+    .col-md-3= bank_account.name
+    .col-md-3.bank_balance= number_to_gbp(bank_account.current_balance)
 
