@@ -1,7 +1,7 @@
 module OmniAuth
   module Strategies
     class FreeagentAuth < OmniAuth::Strategies::OAuth2
-      AUTH_PROVIDER = ENV['FREEAGENT_OAUTH_PROVIDER']
+      AUTH_PROVIDER = "#{ENV['FREEAGENT_BASE_URI']}/v2"
 
       option :name, 'freeagent_auth'
 
