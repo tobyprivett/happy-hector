@@ -1,2 +1,6 @@
 language: ruby
-script: bundle exec rubocop && bundle exec rspec
+script:
+  - bundle exec rubocop
+  - bundle exec rails db:setup
+  - bundle exec rspec spec
+cache: bundler
