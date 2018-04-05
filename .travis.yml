@@ -4,3 +4,10 @@ script:
   - bundle exec rails db:setup
   - bundle exec rspec spec
 cache: bundler
+env:
+  FREEAGENT_CLIENT_ID: abc
+  FREEAGENT_CLIENT_SECRET: def
+  FREEAGENT_BASE_URI: foo.freeagent.com
+notifications:
+  on_success: never
+  on_failure: never
