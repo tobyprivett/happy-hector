@@ -15,7 +15,7 @@
               Bank Account:
               = bank_account.name
             %td.text-sm-right.bank_balance
-              = number_to_gbp(bank_account.current_balance)
+              = number_to_gbp(bank_account.current_balance, 0)
             %td
 
         - @balance_sheet.open_invoices.each do |open_invoice|
@@ -24,7 +24,7 @@
               Open Invoice:
               = open_invoice.contact_name
             %td.text-sm-right.due_value
-              = number_to_gbp(open_invoice.due_value)
+              = number_to_gbp(open_invoice.due_value, 0)
             %td
 
         %tr.bg-warning.text-white
@@ -34,11 +34,11 @@
 
         %tr#corporation-tax
           %td{colspan: 2} Corporation Tax owed
-          %td.text-sm-right 2
+          %td.text-sm-right= number_to_gbp(@balance_sheet.corporation_tax_owed, 0)
 
         %tr#vat
           %td{colspan: 2} VAT owed
-          %td.text-sm-right 2
+          %td.text-sm-right= number_to_gbp(@balance_sheet.vat_owed, 0)
 
         %tr#salaries
           %td{colspan: 2} Salaries owed
@@ -50,5 +50,5 @@
 
         %tr.bg-success.text-white
           %td{colspan: 2} Owner's Equity
-          %td.retained-profit= number_to_gbp(@balance_sheet.retained_profit)
+          %td.retained-profit= number_to_gbp(@balance_sheet.retained_profit, 0)
 
