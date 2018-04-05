@@ -1,21 +1,54 @@
-.row
-  .col-md-6
-    %h1 Balance Sheet
-#assets
-  .row
-    .col-sm-3 Distributable
-    .col-sm-3.retained-profit= number_to_gbp(@balance_sheet.retained_profit)
-  .row{style: "margin-top:30px;"}
-    .col-md-6
-      %h5 Bank Accounts
-  - @balance_sheet.bank_accounts.each do |bank_account|
-    .row
-      .col-md-3= bank_account.name
-      .col-md-3.bank_balance= number_to_gbp(bank_account.current_balance)
-  .row{style: "margin-top:30px;"}
-    .col-md-6
-      %h5 Open Invoices
-  - @balance_sheet.open_invoices.each do |open_invoice|
-    .row
-      .col-md-3.contact_name= open_invoice.contact_name
-      .col-md-3.due_value= number_to_gbp(open_invoice.due_value)
+.card.mt-3
+  .card-header
+    Balance Sheet
+  .card-body
+    %table.table
+      %tbody
+        %tr.bg-info.text-white
+          %td Total Assets
+          %td.text-sm-right 99
+          %td
+
+        - @balance_sheet.bank_accounts.each do |bank_account|
+          %tr
+            %td.bank_account_name
+              Bank Account:
+              = bank_account.name
+            %td.text-sm-right.bank_balance
+              = number_to_gbp(bank_account.current_balance)
+            %td
+
+        - @balance_sheet.open_invoices.each do |open_invoice|
+          %tr
+            %td.contact_name
+              Open Invoice:
+              = open_invoice.contact_name
+            %td.text-sm-right.due_value
+              = number_to_gbp(open_invoice.due_value)
+            %td
+
+        %tr.bg-warning.text-white
+          %td Total Liabilities
+          %td
+          %td.text-sm-right 1000
+
+        %tr#corporation-tax
+          %td{colspan: 2} Corporation Tax owed
+          %td.text-sm-right 2
+
+        %tr#vat
+          %td{colspan: 2} VAT owed
+          %td.text-sm-right 2
+
+        %tr#salaries
+          %td{colspan: 2} Salaries owed
+          %td.text-sm-right 2
+
+        %tr#salaries
+          %td{colspan: 2} Expenses owed
+          %td.text-sm-right 2
+
+        %tr.bg-success.text-white
+          %td{colspan: 2} Owner's Equity
+          %td.retained-profit= number_to_gbp(@balance_sheet.retained_profit)
+
