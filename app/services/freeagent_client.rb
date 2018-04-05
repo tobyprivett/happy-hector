@@ -15,4 +15,10 @@ class FreeagentClient
       '/v2/accounting/profit_and_loss/summary'
     ).parsed_response['profit_and_loss_summary']
   end
+
+  def bank_accounts
+    self.class.get(
+      '/v2/bank_accounts'
+    ).parsed_response['bank_accounts']
+  end
 end

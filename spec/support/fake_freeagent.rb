@@ -5,6 +5,10 @@ class FakeFreeagent < Sinatra::Base
     json_response 200, 'profit_and_loss_summary.json'
   end
 
+  get '/v2/bank_accounts' do
+    json_response 200, 'bank_accounts.json'
+  end
+
   private
 
   def json_response(response_code, file_name)
