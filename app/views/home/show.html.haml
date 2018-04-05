@@ -11,4 +11,12 @@
   .row
     .col-md-3= bank_account.name
     .col-md-3.bank_balance= number_to_gbp(bank_account.current_balance)
+.row{style: "margin-top:30px;"}
+  .col-md-6
+    %h5 Open Invoices
+- @balance_sheet.open_invoices.each do |open_invoice|
+  .row
+    .col-md-3.contact_name= open_invoice.contact_name
+    .col-md-3.due_value= number_to_gbp(open_invoice.due_value)
+
 

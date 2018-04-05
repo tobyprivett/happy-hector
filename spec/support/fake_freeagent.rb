@@ -9,6 +9,10 @@ class FakeFreeagent < Sinatra::Base
     json_response 200, 'bank_accounts.json'
   end
 
+  get '/v2/invoices' do
+    json_response 200, 'open_invoices.json' if params['view'] == 'open'
+  end
+
   private
 
   def json_response(response_code, file_name)

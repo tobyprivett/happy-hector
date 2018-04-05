@@ -21,4 +21,10 @@ class FreeagentClient
       '/v2/bank_accounts'
     ).parsed_response['bank_accounts']
   end
+
+  def open_invoices
+    self.class.get(
+      '/v2/invoices?view=open'
+    ).parsed_response['invoices']
+  end
 end
