@@ -38,4 +38,6 @@ group :test do
   gem 'launchy'
   gem 'rack_session_access'
   gem 'simplecov', require: false
+  gem 'sinatra'
+  gem 'webmock'
 end

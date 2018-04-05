@@ -1,0 +1,26 @@
+{
+    "profit_and_loss_summary": {
+        "from": "2018-01-01",
+        "to": "2018-04-04",
+        "income": "20598",
+        "expenses": "3965",
+        "operating_profit": "16633",
+        "less": [
+            {
+                "title": "Corp. Tax",
+                "total": "3160"
+            },
+            {
+                "title": "Dividends",
+                "total": "9904"
+            },
+            {
+                "title": "Adjustments",
+                "total": "0"
+            }
+        ],
+        "retained_profit": "3569",
+        "retained_profit_brought_forward": "29100",
+        "retained_profit_carried_forward": "32670"
+    }
+}
