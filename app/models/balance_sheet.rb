@@ -7,7 +7,7 @@ class BalanceSheet
 
   def retained_profit
     @retained_profit ||=
-      fa_client.profit_and_loss_summary['retained_profit_carried_forward']
+      fa_client.profit_and_loss_summary['retained_profit_carried_forward'].to_f
   end
 
   def bank_accounts
@@ -38,12 +38,13 @@ class BalanceSheet
     @vat_owed ||= trial_balance_total(817)
   end
 
-  def total_assets
-
-  end
-
-  def total_liabilities
-
+  def adjustments
+    [
+      bank_accounts.sum(&:current_balance),
+      open_invoices.sum(&:due_value),
+      corporation_tax_owed,
+      vat_owed
+    ].inject(0, :+) - retained_profit
   end
 
   private
