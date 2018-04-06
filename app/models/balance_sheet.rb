@@ -15,7 +15,7 @@ class BalanceSheet
       fa_client.bank_accounts.map do |obj|
         OpenStruct.new(
           name: obj['name'],
-          current_balance: obj['current_balance']
+          current_balance: obj['current_balance'].to_f
         )
       end
   end
@@ -25,23 +25,28 @@ class BalanceSheet
       fa_client.open_invoices.map do |obj|
         OpenStruct.new(
           contact_name: obj['contact_name'],
-          due_value: obj['due_value']
+          due_value: obj['due_value'].to_f
         )
       end
   end
 
   def corporation_tax_owed
-    12
+    @corporation_tax_owed ||= trial_balance_total(820)
   end
 
   def vat_owed
-    23
+    @vat_owed ||= trial_balance_total(817)
   end
 
   private
 
   def trial_balance
     @trial_balance ||= fa_client.trial_balance
+  end
+
+  def trial_balance_total(nominal_code)
+    item = trial_balance.detect { |tb| tb['nominal_code'] == nominal_code.to_s }
+    item['total']&.to_f || 0
   end
 
   def fa_client

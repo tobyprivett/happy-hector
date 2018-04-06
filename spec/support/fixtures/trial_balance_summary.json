@@ -1,0 +1,16 @@
+{
+    "trial_balance_summary": [
+        {
+            "category": "https://api.freeagent.com/v2/categories/817",
+            "nominal_code": "817",
+            "name": "VAT",
+            "total": "-2271.43"
+        },
+        {
+            "category": "https://api.freeagent.com/v2/categories/820",
+            "nominal_code": "820",
+            "name": "Corporation Tax",
+            "total": "-13476.49"
+        }
+    ]
+}

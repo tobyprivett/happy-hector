@@ -12,5 +12,7 @@ describe 'User views balance sheet' do
     expect(page).to have_css('.contact_name', text: 'Api Test Inc')
     expect(page).to have_css('.due_value', text: '£1,020')
     expect(page).to have_css('.retained-profit', text: '£32,670')
+    expect(page).to have_css('.corporation_tax_owed', text: '-£13,476')
+    expect(page).to have_css('.vat_owed', text: '-£2,271')
   end
 end

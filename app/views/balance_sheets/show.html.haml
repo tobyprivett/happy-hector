@@ -34,11 +34,11 @@
 
         %tr#corporation-tax
           %td{colspan: 2} Corporation Tax owed
-          %td.text-sm-right= number_to_gbp(@balance_sheet.corporation_tax_owed, 0)
+          %td.text-sm-right.corporation_tax_owed= number_to_gbp(@balance_sheet.corporation_tax_owed, 0)
 
         %tr#vat
           %td{colspan: 2} VAT owed
-          %td.text-sm-right= number_to_gbp(@balance_sheet.vat_owed, 0)
+          %td.text-sm-right.vat_owed= number_to_gbp(@balance_sheet.vat_owed, 0)
 
         %tr#salaries
           %td{colspan: 2} Salaries owed

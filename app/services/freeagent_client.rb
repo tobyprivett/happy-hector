@@ -31,7 +31,7 @@ class FreeagentClient
   def trial_balance
     self.class.get(
       calendar_year_date_range('/v2/accounting/trial_balance/summary')
-    ).parsed_response['trial_balance']
+    ).parsed_response['trial_balance_summary']
   end
 
   private
