@@ -1,0 +1,40 @@
+{
+    "bank_accounts": [
+        {
+            "url": "https://api.freeagent.com/v2/bank_accounts/1",
+            "opening_balance": "0.0",
+            "bank_name": "RBS",
+            "type": "StandardBankAccount",
+            "name": "Business Current Account",
+            "is_personal": false,
+            "is_primary": true,
+            "status": "active",
+            "currency": "GBP",
+            "current_balance": "18756.42",
+            "account_number": "12345678",
+            "sort_code": "11-22-33",
+            "bank_code": "rbs",
+            "latest_activity_date": "2018-03-30",
+            "updated_at": "2018-04-03T07:04:30.000Z",
+            "created_at": "2014-07-02T19:54:36.000Z"
+        },
+        {
+            "url": "https://api.freeagent.com/v2/bank_accounts/1",
+            "opening_balance": "0.0",
+            "bank_name": "Savings & Loan",
+            "type": "StandardBankAccount",
+            "name": "Savings",
+            "is_personal": false,
+            "is_primary": false,
+            "status": "active",
+            "currency": "GBP",
+            "current_balance": "30022.58",
+            "account_number": "98765432",
+            "sort_code": "22-33-44",
+            "bank_code": "generic",
+            "latest_activity_date": "2018-03-14",
+            "updated_at": "2018-03-14T09:29:50.000Z",
+            "created_at": "2017-11-28T13:44:59.000Z"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+%tr
+  %td
+    = link_to "#",
+      data: { toggle: 'tooltip' },
+      title: 'Includes rounding and items not-displayed.' do
+      Adjustments
+  %td.text-sm-right.adjustments= number_to_gbp(@balance_sheet.adjustments, 0)

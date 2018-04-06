@@ -24,4 +24,8 @@ class AuthUser
       )
     end
   end
+
+  def current_auth_token
+    access_token['access_token']
+  end
 end

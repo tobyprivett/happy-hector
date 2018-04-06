@@ -11,4 +11,6 @@ describe 'User logs in' do
     click_on('Sign out')
     expect(page).to have_link('Sign in', href: '/auth/freeagent_auth/')
   end
+
+  scenario 'when the session exists but the access token has expired'
 end

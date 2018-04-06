@@ -8,7 +8,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %header
-      %nav.navbar.navbar-expand-sm.navbar-light.bg-light
+      %nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
         %a.navbar-brand{:href => "/"} #{"Happy Hector".upcase}
         %button.navbar-toggler{"data-target" => "#navbarToggler", "data-toggle" => "collapse", :type => "button"}
           %span.navbar-toggler-icon
@@ -16,6 +16,4 @@
           = render partial: 'shared/login_out'
     %main
       .container
-
-        .row
-          = yield
+        = yield

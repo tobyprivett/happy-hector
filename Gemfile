@@ -17,6 +17,7 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'haml'
 gem 'omniauth-oauth2'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -35,5 +36,8 @@ group :test do
   gem 'rspec-rails', '~> 3.7'
   gem 'capybara'
   gem 'launchy'
+  gem 'rack_session_access'
   gem 'simplecov', require: false
+  gem 'sinatra'
+  gem 'webmock'
 end

@@ -1,0 +1,48 @@
+.card.mt-3
+  .card-header
+    Balance Sheet
+  .card-body
+    %table.table
+      %tbody
+        %tr.bg-info.text-white
+          %td Assets
+          %td
+
+        - @balance_sheet.bank_accounts.each do |bank_account|
+          %tr
+            %td.bank_account_name
+              Bank Account:
+              = bank_account.name
+            %td.text-sm-right.bank_balance
+              = number_to_gbp(bank_account.current_balance, 0)
+
+        - @balance_sheet.open_invoices.each do |open_invoice|
+          %tr
+            %td.contact_name
+              Open Invoice:
+              = open_invoice.contact_name
+            %td.text-sm-right.due_value
+              = number_to_gbp(open_invoice.due_value, 0)
+
+        - if @balance_sheet.adjustments > 0
+          = render partial: 'adjustments'
+
+        %tr.bg-warning.text-white
+          %td Liabilities
+          %td
+
+        %tr#corporation-tax
+          %td Corporation Tax owed
+          %td.text-sm-right.corporation_tax_owed= number_to_gbp(@balance_sheet.corporation_tax_owed, 0)
+
+        %tr#vat
+          %td VAT owed
+          %td.text-sm-right.vat_owed= number_to_gbp(@balance_sheet.vat_owed, 0)
+
+        - if @balance_sheet.adjustments < 0
+          = render partial: 'adjustments'
+
+        %tr.bg-success.text-white
+          %td Owner's Equity
+          %td.text-sm-right.retained-profit= number_to_gbp(@balance_sheet.retained_profit, 0)
+
