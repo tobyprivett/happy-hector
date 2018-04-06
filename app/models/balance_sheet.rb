@@ -1,29 +1,50 @@
 class BalanceSheet
   include ActiveModel::Model
 
-  attr_accessor(
-    :retained_profit,
-    :bank_accounts,
-    :open_invoices,
-    :trial_balance
-  )
+  def initialize(user)
+    @user = user
+  end
+
+  def retained_profit
+    @retained_profit ||=
+      fa_client.profit_and_loss_summary['retained_profit_carried_forward']
+  end
+
+  def bank_accounts
+    @bank_accounts ||=
+      fa_client.bank_accounts.map do |obj|
+        OpenStruct.new(
+          name: obj['name'],
+          current_balance: obj['current_balance']
+        )
+      end
+  end
+
+  def open_invoices
+    @open_invoices ||=
+      fa_client.open_invoices.map do |obj|
+        OpenStruct.new(
+          contact_name: obj['contact_name'],
+          due_value: obj['due_value']
+        )
+      end
+  end
 
   def corporation_tax_owed
-    trial_balance.try(:corporation_tax_owed)
+    12
   end
 
   def vat_owed
-    trial_balance.try(:vat_owed)
+    23
   end
 
-  class << self
-    def for(user)
-      BalanceSheet.new(
-        retained_profit: ProfitAndLossSummary.find(user),
-        bank_accounts: BankAccount.all(user),
-        open_invoices: OpenInvoice.all(user),
-        trial_balance: TrialBalance.find(user)
-      )
-    end
+  private
+
+  def trial_balance
+    @trial_balance ||= fa_client.trial_balance
+  end
+
+  def fa_client
+    @fa_client ||= FreeagentClient.new(@user)
   end
 end

@@ -27,4 +27,16 @@ class FreeagentClient
       '/v2/invoices?view=open'
     ).parsed_response['invoices']
   end
+
+  def trial_balance
+    self.class.get(
+      calendar_year_date_range('/v2/accounting/trial_balance/summary')
+    ).parsed_response['trial_balance']
+  end
+
+  private
+
+  def calendar_year_date_range(path)
+    "#{path}?from_date=#{Date.today.beginning_of_year}&to_date=#{Date.today.end_of_year}"
+  end
 end
