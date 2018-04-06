@@ -38,6 +38,14 @@ class BalanceSheet
     @vat_owed ||= trial_balance_total(817)
   end
 
+  def total_assets
+
+  end
+
+  def total_liabilities
+
+  end
+
   private
 
   def trial_balance

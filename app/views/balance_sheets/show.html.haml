@@ -40,14 +40,6 @@
           %td{colspan: 2} VAT owed
           %td.text-sm-right.vat_owed= number_to_gbp(@balance_sheet.vat_owed, 0)
 
-        %tr#salaries
-          %td{colspan: 2} Salaries owed
-          %td.text-sm-right 2
-
-        %tr#salaries
-          %td{colspan: 2} Expenses owed
-          %td.text-sm-right 2
-
         %tr.bg-success.text-white
           %td{colspan: 2} Owner's Equity
           %td.retained-profit= number_to_gbp(@balance_sheet.retained_profit, 0)
